@@ -263,19 +263,17 @@
     // Clear existing options
     selectElement.innerHTML = "";
 
-    // Add a default placeholder option
-    const placeholderOption = document.createElement("option");
-    placeholderOption.value = "";
-    placeholderOption.textContent = "Select your country";
-    placeholderOption.disabled = true;
-    placeholderOption.selected = true;
-    selectElement.appendChild(placeholderOption);
-
     // Add country options
     Object.entries(countries).forEach(([code, name]) => {
       const option = document.createElement("option");
       option.value = code;
       option.textContent = `${getFlagEmoji(code)} ${name}`;
+
+      // Set United States as default selected
+      if (code === "us") {
+        option.selected = true;
+      }
+
       selectElement.appendChild(option);
     });
 
